@@ -22,7 +22,18 @@ var add_image_handlers = function() {
     }
   );
 
+  set_default_image();
 };
+
+var set_default_image = function() {
+  var link = jQuery("#variant-thumbnails a")[0];
+  if(link == null) {
+    link = jQuery("#product-thumbnails a")[0];
+  }
+  if( link != null ) {
+    update_main_image(link);
+  }
+}
  
 jQuery(document).ready(function() {
   add_image_handlers();
@@ -52,13 +63,5 @@ jQuery(document).ready(function() {
     }
  
     add_image_handlers();
-
-    var link = jQuery("#variant-thumbnails a")[0];
-    if(link == null) {
-      link = jQuery("#product-thumbnails a")[0];
-    }
-    if( link != null ) {
-      update_main_image(link);
-    }
   });
 });

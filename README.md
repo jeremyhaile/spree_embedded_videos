@@ -1,13 +1,21 @@
-SpreeEmbeddedVideos
+Spree Embedded Videos Extension
 ===================
 
-Introduction goes here.
+This extension adds videos to the product thumbnails displayed when showing a product.  It uses
+the oembed protocol and ruby-oembed and currently supports YouTube, Vimeo, Hulu, Viddler, and Qik.  It should
+be fairly trivial to add additional video services if they support oembed.
 
 
-Example
+Install
 =======
 
-Example goes here.
+To install just include the 'spree-embedded-videos' gem in your Gemfile and run:
+```sh
+rake spree_embedded_videos:install
+```
+
+Warning: This extension completely overwrites _thumbnails.html.erb and product.js from core spree, so if you have
+modified these files be careful.
 
 
-Copyright (c) 2011 [name of extension creator], released under the New BSD License
+Copyright (c) 2011 Vitrue, released under the New BSD License
