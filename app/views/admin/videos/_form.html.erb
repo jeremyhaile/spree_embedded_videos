@@ -1,0 +1,12 @@
+<% if @product.has_variants? %>
+  <tr>
+    <td><%= Variant.model_name.human %>:</td>
+    <td><%= f.select :viewable_id, @variants %></td>
+  </tr>
+<% else %>
+  <%= hidden_field_tag :product_id, @product.id %>
+<% end %>
+<tr>
+  <td><%= t("url") %>:</td>
+  <td><%= f.text_field :url %></td>
+</tr>

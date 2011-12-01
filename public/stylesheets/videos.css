@@ -1,0 +1,24 @@
+#product-images #main-image iframe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+ul.thumbnails li.video img { width: 48px; }
+ul.thumbnails li.video span {
+    z-index: 999;
+    background: rgba(50,50,50,0.9);
+    color: #ddd;
+    font-size: 10px;
+    height: 1.2em;
+    text-align: center;
+    padding: 2px 0 3px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}

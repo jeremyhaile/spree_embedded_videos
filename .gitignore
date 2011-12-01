@@ -1,0 +1,12 @@
+\#*
+*~
+.#*
+.DS_Store
+.bundle
+.idea
+.project
+.rvmrc
+spec/test_app
+tmp
+nbproject
+*.swp

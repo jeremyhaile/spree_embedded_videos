@@ -1,0 +1,25 @@
+<%= render :partial => 'admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Videos"} %>
+
+<p><%=t("video_description")%></p>
+
+<%= render "shared/error_messages", :target => @video %>
+
+<%= form_for(:video, :url => admin_product_video_url(@product), :html => { :method => :put, :multipart => true }) do |f| %>
+  <table class="basic-table">
+    <% if @video.thumbnail_url and @video.errors.empty? %>
+      <tr>
+        <td><%= t("video") %>:</td>
+        <td>
+            <%= @video.embed_html(240).html_safe %>
+        </td>
+      </tr>
+    <% end %>
+    <%= render :partial => "form", :locals => { :f => f } %>
+  </table>
+  <p class="form-buttons">
+    <%= button t("update") %>
+    <%= t('or') %> <%= link_to t("cancel"), admin_product_videos_url(@product), :id => "cancel_link" %>
+  </p>
+<% end %>

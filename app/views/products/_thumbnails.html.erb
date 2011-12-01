@@ -1,0 +1,53 @@
+<!-- no need for thumbnails unless there is more then one image or video -->
+<ul id="product-thumbnails" class="thumbnails">
+  <% product.images.each do |i| %>
+    <li><%= link_to(image_tag(i.attachment.url(:mini)), i.attachment.url(:product)) %></li>
+  <% end %>
+
+  <% @product.videos.each do |v| %>
+    <li id="video_<%=v.id%>" class="video">
+      <%= link_to(image_tag(v.thumbnail_url), v.thumbnail_url) %>
+      <span>Video</span>
+    </li>
+    <script type="text/javascript">
+      $('#video_<%=v.id%>').data('embed', <%== v.embed_html(240).to_json %>);
+    </script>
+  <% end %>
+</ul>
+
+<% if @product.has_variants?
+  has_checked = false %>
+  <ul id="variant-thumbnails" class="thumbnails">
+    <% @variants.each do |v|
+        checked = !has_checked && (v.available?)
+        has_checked = true if checked
+
+        if checked
+          v.images.each do |i| %>
+            <li><%= link_to(image_tag(i.attachment.url(:mini)), i.attachment.url(:product)) %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+<% end %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'videos' %>
+
+  <script type="text/javascript" charset="utf-8">
+    var images = new Array();
+    var video_thumbnails = new Array();
+    <% @variants.each do |v| %>
+      images[<%= v.id.to_s %>] = new Array();
+      <% v.images.each_with_index do |image, i| %>
+        images[<%= v.id.to_s %>][<%= i %>] = <%== link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:product)).to_json %>;
+      <% end %>
+
+      video_thumbnails[<%= v.id.to_s %>] = new Array();
+      <% v.videos.each_with_index do |video, i| %>
+        video_thumbnails[<%= v.id.to_s %>][<%= i %>] = {link: <%== link_to(image_tag(video.thumbnail_url), video.thumbnail_url).to_json %>,
+                                                        embed: <%== video.embed_html(240).to_json %>};
+      <% end %>
+    <% end %>
+  </script>
+<% end %>
