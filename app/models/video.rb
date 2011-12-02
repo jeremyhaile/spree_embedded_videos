@@ -5,24 +5,22 @@ class Video < ActiveRecord::Base
 
   before_save :update_metadata
 
+  validates :url, :presence => true
   validates_each :url do |model, attr, value|
-    begin
-      oembed_response = model.oembed_cached()
-      unless oembed_response.type == 'video'
+    if value.present?
+      begin
+        oembed_response = model.oembed_cached()
+        unless oembed_response.type == 'video'
+          model.errors.add(attr, I18n.t("video_invalid_url"))
+        end
+      rescue OEmbed::NotFound
         model.errors.add(attr, I18n.t("video_invalid_url"))
       end
-    rescue OEmbed::NotFound
-      model.errors.add(attr, I18n.t("video_invalid_url"))
     end
   end
 
   def embed_html(maxwidth = nil)
-    html = oembed_cached(maxwidth).html
-
-    # This is a fix for YouTube to set wmode to transparent and prevent z-index issues
-    html.gsub(/src=\".?*\"/, "src=\"$1&wmode=transparent\"")
-
-    html
+    oembed_cached(maxwidth).html
   end
 
   def oembed_cached(maxwidth = nil)
@@ -53,7 +51,7 @@ class Video < ActiveRecord::Base
     end
   end
 
-  def oembed_cache_key(maxwidth)
+  def oembed_cache_key(maxwidth = nil)
     if maxwidth
       "video:oembed:#{url}:#{maxwidth}"
     else
