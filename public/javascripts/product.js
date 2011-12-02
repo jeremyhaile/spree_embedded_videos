@@ -32,15 +32,20 @@ var set_default_image = function(vid) {
     update_main_image(link);
   }
 }
- 
-jQuery(document).ready(function() {
-  add_image_handlers();
 
-  jQuery('#product-variants input[type=radio]').click(function () {
-    var vid = this.value;
+var variant_changed = function () {
+  var el = jQuery('#product-variants input[type=radio]');
+  if(el) {
+    var vid = $('input[type=radio]:checked').val();
     $('.thumbnails').hide();
     $('#product-thumbnails').show();
     $('#variant-thumbnails-' + vid).show();
     set_default_image(vid);
-  });
+  }
+};
+
+jQuery(document).ready(function() {
+  jQuery('#product-variants input[type=radio]').change(variant_changed);
+  add_image_handlers();
+  variant_changed();
 });

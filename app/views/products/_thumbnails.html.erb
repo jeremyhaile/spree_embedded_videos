@@ -1,4 +1,3 @@
-<!-- no need for thumbnails unless there is more then one image or video -->
 <%= render :partial => 'thumbnail_items', :locals => {:list_id => 'product-thumbnails', :images => @product.images, :videos => @product.videos } %>
 
 <% if @product.has_variants? %>
