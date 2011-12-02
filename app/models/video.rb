@@ -13,6 +13,8 @@ class Video < ActiveRecord::Base
         unless oembed_response.type == 'video'
           model.errors.add(attr, I18n.t("video_invalid_url"))
         end
+      rescue OEmbed::UnknownResponse
+        model.errors.add(attr, I18n.t("video_unknown_response"))
       rescue OEmbed::NotFound
         model.errors.add(attr, I18n.t("video_invalid_url"))
       end

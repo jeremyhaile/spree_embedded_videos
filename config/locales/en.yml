@@ -7,3 +7,4 @@ en:
   images_for: "Images/Videos for"
   video_description: "Enter a YouTube, Vimeo, Hulu, Viddler or Qik video URL to add that video to your product. (e.g. http://www.youtube.com/watch?v=nTasT5h0LEg)"
   video_invalid_url: "doesn't appear to be a valid video URL."
+  video_unknown_response: "could not be processed. It is possible that you are not authorized to embed that video. Please check the sharing settings on this video."
