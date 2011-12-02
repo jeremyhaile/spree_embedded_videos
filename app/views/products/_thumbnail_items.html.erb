@@ -1,0 +1,20 @@
+<% hidden ||= false %>
+
+<ul id="<%= list_id %>" class="thumbnails" style="<%= hidden ? 'display: none' : '' %>">
+  <% images.each do |i| %>
+    <li id="image_<%=i.id%>" class="image"><%= link_to(image_tag(i.attachment.url(:mini)), i.attachment.url(:product)) %></li>
+    <script type="text/javascript">
+      $('#image_<%=i.id%>').data('content', <%==image_tag(i.attachment.url(:product)).to_json %>);
+    </script>
+  <% end %>
+
+  <% videos.each do |v| %>
+    <li id="video_<%=v.id%>" class="video">
+      <%= link_to(image_tag(v.thumbnail_url), v.thumbnail_url) %>
+      <span>Video</span>
+    </li>
+    <script type="text/javascript">
+      $('#video_<%=v.id%>').data('content', <%== v.embed_html(240).to_json %>);
+    </script>
+  <% end %>
+</ul>
