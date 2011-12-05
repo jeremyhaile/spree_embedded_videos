@@ -2,13 +2,13 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_embedded_videos'
   s.version     = '0.60.4'
-  s.summary     = 'Add gem summary here'
-  s.description = 'Add (optional) gem description here'
+  s.summary     = 'A Spree extension that adds embedded videos to the product pages.'
+  s.description = 'This extension uses oembed to support a variety of video services, such as YouTube, Vimeo, Brightcove, Viddler, Hulu, and more.'
   s.required_ruby_version = '>= 1.8.7'
 
   s.author            = 'Jeremy Haile'
   s.email             = 'jhaile@gmail.com'
-  s.homepage          = 'http://www.github.com/vitrue/spree_embedded_videos'
+  s.homepage          = 'http://www.github.com/jeremyhaile/spree-embedded-videos'
   s.rubyforge_project = 'spree-embedded-videos'
 
   s.files         = `git ls-files`.split("\n")

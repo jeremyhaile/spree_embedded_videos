@@ -17,5 +17,11 @@ rake spree_embedded_videos:install
 Warning: This extension completely overwrites _thumbnails.html.erb and product.js from core spree, so if you have
 modified these files be careful.
 
+Configuration
+=======
+
+This extension supports Embed.ly in order to support video services that don't implement an oembed endpoint
+(e.g. Brightcove).  To enable embedly support, copy config/spree_embedded_videos.yml.example file into your
+Rails project's config folder.  Rename it to spree_embedded_videos.yml and configure your embedly API key.
 
 Copyright (c) 2011 Vitrue, released under the New BSD License
