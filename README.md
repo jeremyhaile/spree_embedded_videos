@@ -2,7 +2,7 @@ Spree Embedded Videos Extension
 ===================
 
 This extension adds videos to the product thumbnails displayed when showing a product.  It uses
-the oembed protocol and ruby-oembed and currently supports YouTube, Vimeo, Hulu, Viddler, and Qik.  It should
+the oembed protocol and ruby-oembed and currently supports YouTube, Vimeo, Hulu and Viddler.  It should
 be fairly trivial to add additional video services if they support oembed.
 
 
