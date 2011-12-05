@@ -30,7 +30,17 @@ class Video < ActiveRecord::Base
       options = {}
       options["maxwidth"] = maxwidth if maxwidth
 
-      response = OEmbed::Providers.get(url, options)
+      provider = OEmbed::Providers.find(url)
+
+      # If embedly is the chosen provider and is configured, set an api key in the options
+      if provider && provider.endpoint.include?("embed.ly") && SpreeEmbeddedVideos::Config.embedly_api_key
+        options["key"] = SpreeEmbeddedVideos::Config.embedly_api_key
+      end
+
+      response = nil
+      if provider
+        response = provider.get(url, options)
+      end
       response.nil? ? nil : OpenStruct.new(response.fields).freeze
     end
   end

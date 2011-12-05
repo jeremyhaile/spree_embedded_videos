@@ -1,0 +1,11 @@
+# This is an example configuration file for spree embedded videos.
+# Place this file in your Rails config folder and rename it to spree_embedded_videos.yml
+# Then edit the file with your environment configuration.
+
+defaults: &defaults
+  embedly_api_key: "EMBEDLY API KEY"
+
+development:
+  <<: *defaults
+production:
+  <<: *defaults
