@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_embedded_videos'
+  s.name        = 'spree-embedded-videos'
   s.version     = '0.60.4'
   s.summary     = 'A Spree extension that adds embedded videos to the product pages.'
   s.description = 'This extension uses oembed to support a variety of video services, such as YouTube, Vimeo, Brightcove, Viddler, Hulu, and more.'
