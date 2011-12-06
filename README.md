@@ -9,7 +9,7 @@ be fairly trivial to add additional video services if they support oembed.
 Install
 =======
 
-To install just include the 'spree-embedded-videos' gem in your Gemfile and run:
+To install just include the 'spree_embedded_videos' gem in your Gemfile and run:
 ```sh
 rake spree_embedded_videos:install
 ```
